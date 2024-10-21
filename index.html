@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERRAÇO</title>
+    <link rel="stylesheet" href="style.css"> <!-- Certifique-se de que o caminho para o CSS está correto -->
+</head>
+<body>
+    <!-- Seta para o topo -->
+<a href="#" id="back-to-top" title="Voltar ao topo">⬆️</a>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#home">
+                    <img src="imagens/logo003.png" alt="Logo da Empresa">
+                </a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção Home com Vídeo de Fundo -->
+    <section id="home" class="home-section">
+        <div class="overlay">
+            <h1>Bem-vindo à Terraço</h1>
+            <p>A Terraço é uma empresa especializada em serviços de demolição, terraplanagem e aluguel de máquinas. Nossa missão é oferecer soluções eficazes e de qualidade para atender às necessidades dos nossos clientes.</p>
+            <h2>Serviços que oferecemos:</h2>
+            <p>Demolição, Terraplanagem e Aluguel de Máquinas</p>
+            <div class="button-container">
+                <a href="#servicos" class="button">Serviços</a>
+                <a href="#contato" class="button">Contate-nos</a>
+                <button class="button" onclick="openVideoModal()">Assistir Vídeo</button>
+            </div>
+        </div>
+        <video autoplay muted loop class="background-video">
+            <source src="imagens/video01.mov" type="video/mp4">
+            Seu navegador não suporta o vídeo.
+        </video>
+    
+        <!-- Modal para Vídeo -->
+        <div id="videoModal" class="modal" onclick="closeVideoModal(event)" style="display: none;">
+            <span class="close" onclick="closeVideoModal(event)">×</span>
+            <iframe id="video" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+    
+    <script>
+        function openVideoModal() {
+            const videoModal = document.getElementById("videoModal");
+            const video = document.getElementById("video");
+            video.src = "https://player.vimeo.com/video/1019905679?h=9a3a8da0aa"; // Link do vídeo
+            videoModal.style.display = "block";
+    
+            // Coloca o iframe em tela cheia
+            if (videoModal.requestFullscreen) {
+                videoModal.requestFullscreen();
+            } else if (videoModal.mozRequestFullScreen) { // Firefox
+                videoModal.mozRequestFullScreen();
+            } else if (videoModal.webkitRequestFullscreen) { // Chrome, Safari e Opera
+                videoModal.webkitRequestFullscreen();
+            } else if (videoModal.msRequestFullscreen) { // IE/Edge
+                videoModal.msRequestFullscreen();
+            }
+        }
+    
+        function closeVideoModal(event) {
+            if (event.target.className === 'close' || event.target.className === 'modal') {
+                const videoModal = document.getElementById("videoModal");
+                videoModal.style.display = "none";
+                const video = document.getElementById("video");
+                video.src = ""; // Limpa o src para parar a reprodução
+            }
+        }
+    </script>
+    
+
+    <!-- Seção Serviços -->
+    <section id="servicos">
+        <h2>Serviços</h2>
+        <div class="servicos-container">
+            <div class="servico-item">
+                <a href="demolicao.html" class="servico-link">
+                    <div class="servico-image" style="background-image: url('imagens/capademoli.jpg');">
+                        <span>Demolição</span>
+                    </div>
+                </a>
+            </div>
+            <div class="servico-item">
+                <a href="terraplanagem.html" class="servico-link">
+                    <div class="servico-image" style="background-image: url('imagens/logoterrap.jpg');">
+                        <span>Terraplanagem</span>
+                    </div>
+                </a>
+            </div>
+            <div class="servico-item">
+                <a href="fundacao.html" class="servico-link">
+                    <div class="servico-image" style="background-image: url('imagens/funda010.jpg');">
+                        <span>Fundação</span>
+                    </div>
+                </a>
+            </div>
+            <div class="servico-item">
+                <a href="contencao.html" class="servico-link">
+                    <div class="servico-image" style="background-image: url('imagens/terra05.jpg');">
+                        <span>contenção</span>
+                    </div>
+                </a>
+            </div>
+            <div class="servico-item">
+                <a href="locacao_maquinas.html" class="servico-link">
+                    <div class="servico-image" style="background-image: url('imagens/maquina02.jpg');">
+                        <span>Locação de Máquinas</span>
+                    </div>
+                </a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Seção Portfólio -->
+    <section id="portfolio" class="portfolio-section">
+        <h2 style="text-align: center; color: #cba135;">Nosso Portfólio</h2>
+
+        <!-- Primeiro projeto: imagem à esquerda, texto à direita -->
+        <div class="portfolio-item">
+            <div class="portfolio-image" style="background-image: url('imagens/port06.webp');"></div>
+            <div class="portfolio-text">
+                <h3>Conheça a Empresa</h3>
+                <h4>Excelência em Terraplanagem e Demolição</h4>
+                <p>Na Terraço, temos o orgulho de apresentar nosso portfólio, que reflete a excelência e a qualidade de nossos serviços de terraplanagem e demolição. Ao longo dos anos, realizamos uma ampla gama de projetos, sempre priorizando a segurança, a eficiência e a satisfação do cliente.</p>
+            </div>
+        </div>
+
+        <!-- Segundo projeto: imagem à direita, texto à esquerda -->
+        <div class="portfolio-item reverse">
+            <div class="portfolio-text">
+                <h3>Por que Escolher a Terraço?</h3>
+                <h4>Compromisso com a Segurança e Sustentabilidade</h4>
+                <p>
+                    <strong>Demolição de Edifício Comercial:</strong> Em um projeto recente, nossa equipe executou a demolição completa de um edifício comercial no centro da cidade. Utilizamos equipamentos modernos e técnicas inovadoras para garantir a segurança de todos os envolvidos e minimizar o impacto ambiental. O resultado foi a liberação do espaço para um novo empreendimento, que agora prospera na região.
+                    <br><br>
+                    <strong>Terraplanagem de Grande Porte:</strong> Em outro projeto significativo, realizamos a terraplanagem de uma área de 100.000 m² para a construção de um parque industrial. Nossa equipe trabalhou de forma integrada, respeitando prazos rigorosos e assegurando que cada etapa do processo fosse executada com precisão. A qualidade do nosso trabalho garantiu a preparação adequada do terreno, permitindo que a construção fosse realizada sem contratempos.
+                    <br><br>
+                    <strong>Aluguel de Máquinas Pesadas:</strong> Além dos serviços de demolição e terraplanagem, oferecemos também aluguel de máquinas pesadas, como escavadeiras, tratores e caminhões. Esses equipamentos são fundamentais para garantir a eficiência em diversos projetos de construção e infraestrutura. Nossa frota é constantemente mantida e inspecionada, garantindo que você tenha acesso às melhores máquinas do mercado para atender suas necessidades, seja em um projeto grande ou pequeno.
+                </p>
+            </div>
+            <div class="portfolio-image" style="background-image: url('imagens/port02.webp');"></div>
+        </div>
+
+        <!-- Terceiro projeto: imagem à esquerda, texto à direita -->
+        <div class="portfolio-item">
+            <div class="portfolio-image" style="background-image: url('imagens/maquina06.jpg');"></div>
+            <div class="portfolio-text">
+                <h3>Vantagens da Terraço</h3>
+                <h4>Compromisso com a Qualidade e Satisfação do Cliente</h4>
+                <p>Experiência e Expertise: Nossa equipe é composta por profissionais altamente capacitados, com vasta experiência no setor.
+                    <br><br>
+                    Compromisso com a Qualidade: Utilizamos materiais e equipamentos de primeira linha, garantindo a durabilidade e segurança de nossos serviços.
+                    <br><br>
+                    Sustentabilidade: Estamos comprometidos com práticas que respeitam o meio ambiente, promovendo a reciclagem e a gestão responsável de resíduos.
+                    <br><br>
+                    Satisfação do Cliente: O feedback positivo de nossos clientes é a nossa maior recompensa. Trabalhamos em estreita colaboração com você para entender suas necessidades e exceder suas expectativas.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato 01 -->
+<section id="contato" class="contato-section">
+    <div class="form-container">
+        <h2>Fale Conosco</h2>
+        <form action="enviar.php" method="post">
+            <!-- Campo Nome -->
+            <div class="form-group">
+                <label for="nome">Nome*</label>
+                <input type="text" id="nome" name="nome" placeholder="Nome" required>
+            </div>
+            
+            <!-- Campo E-mail -->
+            <div class="form-group">
+                <label for="email">E-mail*</label>
+                <input type="email" id="email" name="email" placeholder="E-mail" required>
+            </div>
+
+            <!-- Campo Assunto -->
+            <div class="form-group">
+                <label for="assunto">Assunto*</label>
+                <input type="text" id="assunto" name="assunto" placeholder="Assunto" required>
+            </div>
+
+            <!-- Campo Mensagem -->
+            <div class="form-group">
+                <label for="mensagem">Sua Mensagem *</label>
+                <textarea id="mensagem" name="mensagem" placeholder="Digite a sua mensagem" required></textarea>
+            </div>
+
+            <!-- Botão Enviar -->
+            <button type="submit" class="btn-submit">Enviar Mensagem</button>
+        </form>
+    </div>
+</section>
+
+
+   <!-- Seção Contato -->
+<footer id="contato">
+    <div class="footer-container">
+        <!-- Logo centralizada -->
+        <div class="footer-logo">
+            
+            <img src="imagens/logo003.png" alt="Logo Terraço"> <!-- Substitua 'logo.png' pelo caminho correto da sua logo -->
+        </div>
+
+        <!-- Informações de contato centralizadas -->
+        <div class="contact-info">
+            <h2>Entre em Contato</h2>
+            <p>Email: <a href="mailto:terracodemoli@gmail.com">terracodemoli@gmail.com</a></p>
+            <p>Telefone: (11) 94844-8225</p>
+            
+        </div>
+
+        <!-- Ícone do WhatsApp no canto direito -->
+         
+        <div class="whatsapp-container">
+            <a href="https://wa.me/5511948448225" target="_blank" class="whatsapp-link">
+                <img src="imagens/whatsapp.png" alt="Ícone WhatsApp"> <!-- Substitua pelo caminho do ícone -->
+            </a>
+        </div>
+
+        <div class="whatsapp-container">
+            <a href="https://www.instagram.com/terraco.demolicao/" target="_blank" class="whatsapp-link">
+                <img src="imagens/logoinsta.png" alt="Ícone instagram"> <!-- Substitua pelo caminho do ícone -->
+            </a>
+        </div>
+        <div class="whatsapp-container">
+            <a href="https://www.tiktok.com/@user1611209104880" target="_blank" class="whatsapp-link">
+                <img src="imagens/logotiktok.png" alt="Ícone tiktok"> <!-- Substitua pelo caminho do ícone -->
+            </a>
+        </div>
+    </div>
+</footer>
+
+
+    <script>
+        // Script para o menu hamburguer
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Adiciona ou remove a classe 'active' para mostrar ou esconder o menu
+        });
+
+        // Fecha o menu ao clicar fora dele
+        window.addEventListener('click', (event) => {
+            if (!mobileMenu.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Exibe a seta quando o usuário rola para baixo 300px
+window.onscroll = function() {
+    const backToTop = document.getElementById("back-to-top");
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTop.style.display = "block";
+    } else {
+        backToTop.style.display = "none";
+    }
+};
+
+// Quando a seta for clicada, rola suavemente até o topo
+document.getElementById("back-to-top").addEventListener("click", function(event) {
+    event.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    });
+
+    portfolioItems.forEach(item => {
+        observer.observe(item);
+    });
+});
+
+        
+    </script>
+</body>
+</html>

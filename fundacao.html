@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundação | Terraço</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Seta para o topo -->
+    <a href="#" id="back-to-top" title="Voltar ao topo">⬆️</a>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="imagens/logo003.png" alt="Logo da Empresa">
+                </a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <h1>Fundação</h1>
+        <p>Especialistas em serviços de Fundação com qualidade e segurança.</p>
+    </header>
+
+    <section class="video-gallery-container">
+        <h2>Principais Obras:</h2>
+        <h3>Veja nosso trabalho em ação:</h3>
+        
+        <!-- Galeria de imagens -->
+        <div class="gallery">
+            <div class="image-container">
+                <img src="imagens/funda001.jpg" alt="Serviço de Terraplanagem" class="gallery-image" onclick="openModal(this)">
+            </div>
+            <div class="image-container">
+                <img src="imagens/funda002.jpg" alt="Serviço de Terraplanagem" class="gallery-image" onclick="openModal(this)">
+            </div>
+            <div class="image-container">
+                <img src="imagens/funda003.jpg" alt="Serviço de Terraplanagem" class="gallery-image" onclick="openModal(this)">
+            </div>
+            <div class="image-container">
+                <img src="imagens/funda004.jpg" alt="Serviço de Terraplanagem" class="gallery-image" onclick="openModal(this)">
+            </div>
+            <div class="image-container">
+                <img src="imagens/funda006.jpg" alt="Serviço de Terraplanagem" class="gallery-image" onclick="openModal(this)">
+            </div>
+            <div class="image-container">
+                <img src="imagens/funda008.jpg" alt="Serviço de Terraplanagem" class="gallery-image" onclick="openModal(this)">
+            </div>
+            <div class="image-container">
+                <img src="imagens/funda007.jpg" alt="Serviço de Terraplanagem" class="gallery-image" onclick="openModal(this)">
+            </div>
+        </div>
+
+        <!-- Galeria de vídeos -->
+        <div class="video-gallery">
+            <video controls>
+                <source src="imagens/funda004.mp4" type="video/mp4">
+                Seu navegador não suporta o vídeo.
+            </video>
+            <video controls>
+                <source src="imagens/funda005.mp4" type="video/mp4">
+                Seu navegador não suporta o vídeo.
+            </video>
+            <video controls>
+                <source src="imagens/funda009.mp4" type="video/mp4">
+                Seu navegador não suporta o vídeo.
+            </video>
+        </div>
+    </section>
+
+    <!-- Modal para abrir imagens -->
+    <div id="modal" class="modal" onclick="closeModal(event)">
+        <span class="close" onclick="closeModal(event)">×</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+
+    <!-- Seção de Contato -->
+    <section id="contato" class="contato-section">
+        <div class="form-container">
+            <h2>Fale Conosco</h2>
+            <form action="enviar.php" method="post">
+                <div class="form-group">
+                    <label for="nome">Nome*</label>
+                    <input type="text" id="nome" name="nome" placeholder="Nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail*</label>
+                    <input type="email" id="email" name="email" placeholder="E-mail" required>
+                </div>
+                <div class="form-group">
+                    <label for="assunto">Assunto*</label>
+                    <input type="text" id="assunto" name="assunto" placeholder="Assunto" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Sua Mensagem *</label>
+                    <textarea id="mensagem" name="mensagem" placeholder="Digite a sua mensagem" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer id="contato">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="imagens/logo003.png" alt="Logo Terraço">
+            </div>
+            <div class="contact-info">
+                <h2>Entre em Contato</h2>
+                <p>Email: <a href="mailto:terracodemoli@gmail.com">terracodemoli@gmail.com</a></p>
+                <p>Telefone: (11) 94844-8225</p>
+            </div>
+            <div class="social-media">
+                <a href="https://wa.me/5511948448225" target="_blank">
+                    <img src="imagens/whatsapp.png" alt="WhatsApp">
+                </a>
+                <a href="https://www.instagram.com/terraco.demolicao/" target="_blank">
+                    <img src="imagens/logoinsta.png" alt="Instagram">
+                </a>
+                <a href="https://www.tiktok.com/@user1611209104880" target="_blank">
+                    <img src="imagens/logotiktok.png" alt="TikTok">
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Script para o menu hamburguer
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+
+mobileMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+function openModal(img) {
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal-image");
+    modal.style.display = "block";
+    modalImg.src = img.src;
+}
+
+function closeModal(event) {
+    if (event.target.className === 'close' || event.target.className === 'modal') {
+        const modal = document.getElementById("modal");
+        modal.style.display = "none";
+    }
+}
+
+window.onscroll = function() {
+    const backToTop = document.getElementById("back-to-top");
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTop.style.display = "block";
+    } else {
+        backToTop.style.display = "none";
+    }
+};
+
+document.getElementById("back-to-top").addEventListener("click", function(event) {
+    event.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+    </script>
+</body>
+</html>

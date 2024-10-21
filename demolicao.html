@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terraplanagem | Terraço</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Seta para o topo -->
+    <a href="#" id="back-to-top" title="Voltar ao topo">⬆️</a>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="imagens/logo003.png" alt="Logo da Empresa">
+                </a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <h1>Demolição</h1>
+        <p>Especialistas em serviços de demolição com qualidade e segurança.</p>
+    </header>
+
+    <section class="gallery">
+        <h2>Principais Obras:</h2>
+        <div class="image-container">
+            <img src="imagens/demolicao01.jpg" alt="Serviço de Demolição" class="gallery-image" onclick="openModal(this)">
+        </div>
+        <div class="image-container">
+            <img src="imagens/demolicao02.jpg" alt="Serviço de Demolição" class="gallery-image" onclick="openModal(this)">
+        </div>
+        <div class="image-container">
+            <img src="imagens/demoli04.jpg" alt="Serviço de Demolição" class="gallery-image" onclick="openModal(this)">
+        </div>
+        <div class="image-container">
+            <img src="imagens/demolicao03.jpg" alt="Serviço de Demolição" class="gallery-image" onclick="openModal(this)">
+        </div>
+        
+        <div class="video-container">
+            <video controls>
+                <source src="imagens/demolivideo01.mp4" type="video/mp4">
+                Seu navegador não suporta o vídeo.
+            </video>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" onclick="closeModal(event)">
+        <span class="close" onclick="closeModal(event)">×</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+
+    <!-- Seção de Contato -->
+    <section id="contato" class="contato-section">
+        <div class="form-container">
+            <h2>Fale Conosco</h2>
+            <form action="enviar.php" method="post">
+                <div class="form-group">
+                    <label for="nome">Nome*</label>
+                    <input type="text" id="nome" name="nome" placeholder="Nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail*</label>
+                    <input type="email" id="email" name="email" placeholder="E-mail" required>
+                </div>
+                <div class="form-group">
+                    <label for="assunto">Assunto*</label>
+                    <input type="text" id="assunto" name="assunto" placeholder="Assunto" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Sua Mensagem *</label>
+                    <textarea id="mensagem" name="mensagem" placeholder="Digite a sua mensagem" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer id="contato">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="imagens/logo003.png" alt="Logo Terraço">
+            </div>
+            <div class="contact-info">
+                <h2>Entre em Contato</h2>
+                <p>Email: <a href="mailto:terracodemoli@gmail.com">terracodemoli@gmail.com</a></p>
+                <p>Telefone: (11) 94844-8225</p>
+            </div>
+            <div class="whatsapp-container">
+                <a href="https://wa.me/5511948448225" target="_blank" class="whatsapp-link">
+                    <img src="imagens/whatsapp.png" alt="Ícone WhatsApp">
+                </a>
+            </div>
+            <div class="whatsapp-container">
+                <a href="https://www.instagram.com/terraco.demolicao/" target="_blank" class="whatsapp-link">
+                    <img src="imagens/logoinsta.png" alt="Ícone Instagram">
+                </a>
+            </div>
+            <div class="whatsapp-container">
+                <a href="https://www.tiktok.com/@user1611209104880" target="_blank" class="whatsapp-link">
+                    <img src="imagens/logotiktok.png" alt="Ícone TikTok">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para o menu hamburguer
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!mobileMenu.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        function openModal(img) {
+            const modal = document.getElementById("modal");
+            const modalImg = document.getElementById("modal-image");
+            modal.style.display = "block";
+            modalImg.src = img.src;
+        }
+
+        function closeModal(event) {
+            if (event.target.className === 'close' || event.target.className === 'modal') {
+                const modal = document.getElementById("modal");
+                modal.style.display = "none";
+            }
+        }
+
+        // Exibe a seta quando o usuário rola para baixo 300px
+        window.onscroll = function() {
+            const backToTop = document.getElementById("back-to-top");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTop.style.display = "block";
+            } else {
+                backToTop.style.display = "none";
+            }
+        };
+
+        // Quando a seta for clicada, rola suavemente até o topo
+        document.getElementById("back-to-top").addEventListener("click", function(event) {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
