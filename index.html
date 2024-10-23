@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TERRAÇO</title>
     <link rel="stylesheet" href="style.css"> <!-- Certifique-se de que o caminho para o CSS está correto -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 <body>
     <!-- Seta para o topo -->
@@ -178,39 +179,64 @@
     </section>
 
     <!-- Seção de Contato 01 -->
+<!-- Seção de Contato -->
 <section id="contato" class="contato-section">
     <div class="form-container">
-        <h2>Fale Conosco</h2>
-        <form action="enviar.php" method="post">
-            <!-- Campo Nome -->
+        <h2>Fale Conosco: </h2>
+        <form id="contact-form">
             <div class="form-group">
                 <label for="nome">Nome*</label>
                 <input type="text" id="nome" name="nome" placeholder="Nome" required>
             </div>
-            
-            <!-- Campo E-mail -->
             <div class="form-group">
                 <label for="email">E-mail*</label>
                 <input type="email" id="email" name="email" placeholder="E-mail" required>
             </div>
-
-            <!-- Campo Assunto -->
             <div class="form-group">
                 <label for="assunto">Assunto*</label>
                 <input type="text" id="assunto" name="assunto" placeholder="Assunto" required>
             </div>
-
-            <!-- Campo Mensagem -->
             <div class="form-group">
                 <label for="mensagem">Sua Mensagem *</label>
                 <textarea id="mensagem" name="mensagem" placeholder="Digite a sua mensagem" required></textarea>
             </div>
-
-            <!-- Botão Enviar -->
             <button type="submit" class="btn-submit">Enviar Mensagem</button>
         </form>
+        <div id="form-message" style="display:none;"></div>
     </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+    // Inicializa o EmailJS com sua chave pública
+    (function() {
+        emailjs.init("x8pLdlAVYzqVIPkei");
+    })();
+
+    // Envio do formulário
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita o envio padrão do formulário
+
+        // Envia o e-mail usando EmailJS
+        emailjs.send("emerald-handler-421323", "template_ifb17hx", {
+            nome: document.getElementById("nome").value,
+            email: document.getElementById("email").value,
+            assunto: document.getElementById("assunto").value,
+            mensagem: document.getElementById("mensagem").value
+        })
+        .then(function(response) {
+            console.log("Mensagem enviada com sucesso!", response);
+            document.getElementById("form-message").innerText = "Mensagem enviada com sucesso!";
+            document.getElementById("form-message").style.display = "block";
+            document.getElementById("contact-form").reset(); // Limpa o formulário
+        }, function(error) {
+            console.log("Falha ao enviar a mensagem: ", error);
+            document.getElementById("form-message").innerText = "Falha ao enviar a mensagem.";
+            document.getElementById("form-message").style.display = "block";
+        });
+    });
+</script>
+
 
 
    <!-- Seção Contato -->
